@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Memuat Nota...</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <script>
+        async function redirectNota() {
+            Swal.fire({
+                title: 'Memuat Nota...',
+                html: '<img src="https://notaku.com/logo.png" alt="Logo" width="100" style="margin-bottom:20px;"><br>Mohon tunggu...',
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+
+            // Ambil ID dari URL
+            const path = window.location.pathname;
+            const pathSegments = path.split('/');
+            const id_unik = pathSegments[pathSegments.length - 1];
+
+            // URL mapping.json kamu
+            const apiUrl = 'https://nugroho0505.github.io/Invoice/nota/mapping.json';
+
+            try {
+                const response = await fetch(apiUrl + '?nocache=' + new Date().getTime());
+                const data = await response.json();
+
+                // Cari ID di JSON
+                const nota = data.find(item => item.id === id_unik);
+
+                if (nota) {
+                    Swal.update({
+                        html: '<img src="https://notaku.com/logo.png" alt="Logo" width="100" style="margin-bottom:20px;"><br>Nota ditemukan, mengarahkan...'
+                    });
+
+                    console.log('Redirecting to: ', nota.url);
+                    alert('Redirecting to: ' + nota.url);
+
+                    setTimeout(() => {
+                        window.location.href = nota.url;
+                    }, 500);
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Nota tidak ditemukan!'
+                    });
+                }
+            } catch (error) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal',
+                    text: 'Terjadi kesalahan saat mengambil data.'
+                });
+                console.error(error);
+            }
+        }
+
+        window.onload = redirectNota;
+    </script>
+</body>
+</html>
