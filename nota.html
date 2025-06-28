@@ -23,7 +23,7 @@
             const id_unik = path.split('/').pop();
 
             // Fetch mapping JSON dari GitHub
-            const apiUrl = 'https://username.github.io/nota-online/nota/mapping.json';
+            const apiUrl = 'https://username.github.io/invoice/list.json';
 
             try {
                 const response = await fetch(apiUrl + '?nocache=' + new Date().getTime()); // Biar gak cache
