@@ -1,22 +1,18 @@
 [
   {
-    "nama_tanpa_ext": "e8a7c426",
-    "nama_file": "e8a7c426.pdf",
-    "link_file": "https://drive.google.com/file/d/1pceDlC5EiI4VQW6A3wP3iYSxeykTDLZW/view?usp=drivesdk"
+    "id": "e8a7c426",
+        "url": "https://drive.google.com/file/d/1pceDlC5EiI4VQW6A3wP3iYSxeykTDLZW/view?usp=drivesdk"
   },
   {
-    "nama_tanpa_ext": "ee7ffb7e",
-    "nama_file": "ee7ffb7e.pdf",
-    "link_file": "https://drive.google.com/file/d/1LH5mcGQ4d8Adxwuq9E-OjVaH6tR_6NOQ/view?usp=drivesdk"
+    "id": "ee7ffb7e",
+    "url": "https://drive.google.com/file/d/1LH5mcGQ4d8Adxwuq9E-OjVaH6tR_6NOQ/view?usp=drivesdk"
   },
   {
-    "nama_tanpa_ext": "3db97e21",
-    "nama_file": "3db97e21.pdf",
-    "link_file": "https://drive.google.com/file/d/19K2i1jgRJUGV2Isx6pf4CJ5rdZfhvuCU/view?usp=drivesdk"
+    "id": "3db97e21",
+    "url": "https://drive.google.com/file/d/19K2i1jgRJUGV2Isx6pf4CJ5rdZfhvuCU/view?usp=drivesdk"
   },
   {
-    "nama_tanpa_ext": "55d0edbd",
-    "nama_file": "55d0edbd.pdf",
-    "link_file": "https://drive.google.com/file/d/1YTa0C5_W8iZNQ9NRB6euA3cPZt-SZ6jI/view?usp=drivesdk"
+    "id": "55d0edbd",
+    "url": "https://drive.google.com/file/d/1YTa0C5_W8iZNQ9NRB6euA3cPZt-SZ6jI/view?usp=drivesdk"
   }
 ]
