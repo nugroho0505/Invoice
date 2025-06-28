@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Memuat Nota...</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <script>
+        async function redirectNota() {
+            // Tampilkan loading spinner dengan logo
+            Swal.fire({
+                title: 'Memuat Nota...',
+                html: '<img src="https://notaku.com/logo.png" alt="Logo" width="100" style="margin-bottom:20px;"><br>Mohon tunggu...',
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+
+            // Ambil ID dari URL
+            const path = window.location.pathname;
+            const id_unik = path.split('/').pop();
+
+            // Fetch mapping JSON dari GitHub
+            const apiUrl = 'https://username.github.io/nota-online/nota/mapping.json';
+
+            try {
+                const response = await fetch(apiUrl + '?nocache=' + new Date().getTime()); // Biar gak cache
+                const data = await response.json();
+
+                const nota = data.find(item => item.id === id_unik);
+
+                if (nota) {
+                    Swal.update({
+                        html: '<img src="https://notaku.com/logo.png" alt="Logo" width="100" style="margin-bottom:20px;"><br>Nota ditemukan, mengarahkan...'
+                    });
+
+                    setTimeout(() => {
+                        window.location.href = nota.url;
+                    }, 500);
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Nota tidak ditemukan!'
+                    });
+                }
+            } catch (error) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Gagal',
+                    text: 'Terjadi kesalahan saat mengambil data.'
+                });
+                console.error(error);
+            }
+        }
+
+        // Jalankan saat halaman dibuka
+        window.onload = redirectNota;
+    </script>
+</body>
+</html>
