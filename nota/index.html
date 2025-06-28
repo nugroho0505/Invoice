@@ -18,15 +18,15 @@
                 }
             });
 
-            // Ambil ID dari URL
-            const path = window.location.pathname;
-            const id_unik = path.split('/').pop();
+            // Ambil ID dari URL parameter
+            const urlParams = new URLSearchParams(window.location.search);
+            const id_unik = urlParams.get('id');
 
-            // Fetch mapping JSON dari GitHub
-            const apiUrl = 'https://nugroho0505.github.io/Invoice/nota/mapping.json';
+            // Link mapping JSON di GitHub kamu
+            const apiUrl = 'https://nugroho0505.github.io/invoice/nota/mapping.json';
 
             try {
-                const response = await fetch(apiUrl + '?nocache=' + new Date().getTime()); // Biar gak cache
+                const response = await fetch(apiUrl + '?nocache=' + new Date().getTime()); // Hindari cache
                 const data = await response.json();
 
                 const nota = data.find(item => item.id === id_unik);
@@ -56,7 +56,6 @@
             }
         }
 
-        // Jalankan saat halaman dibuka
         window.onload = redirectNota;
     </script>
 </body>
